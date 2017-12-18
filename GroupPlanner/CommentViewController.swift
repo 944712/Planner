@@ -66,7 +66,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
             print("Could not save \(error), \(error.userInfo)")
         }
         // 현재의 View를 없애고 이전 화면으로 복귀
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
 

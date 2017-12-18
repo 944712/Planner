@@ -49,16 +49,7 @@ class SettingViewController: UIViewController {
                 // 접근권한 요청
                 self.eventStore!.requestAccess(to: EKEntityType.reminder, completion:{(isAccessible,errors) in })
             }
-            
-            let predicateForEvents:NSPredicate = self.eventStore!.predicateForReminders(in: [self.eventStore!.defaultCalendarForNewReminders()])
-            self.eventStore!.fetchReminders (matching: predicateForEvents, completion: { (reminders) in
-                for reminder in reminders! {
-                    if reminder.title == "Plan deadline" {
-                        do {
-                            try self.eventStore!.remove(reminder, commit: true)
-                        } catch {
-                        } }
-                } })
+        
             
             
             let reminder = EKReminder(eventStore: self.eventStore!)
@@ -71,7 +62,7 @@ class SettingViewController: UIViewController {
             } catch {
                 NSLog("미리 알림 설정 실패") }
             
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             
             
         }
